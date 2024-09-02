@@ -1,5 +1,4 @@
 import nmap
-import time
 # Using the ESP32Cam stream URL
 def esp32_ip_address(target_mac):
     nm = nmap.PortScanner()
@@ -20,6 +19,6 @@ def esp32_ip_address(target_mac):
                 # print(target_mac)
                 return host
 
-esp32_mac_address = 'A8:42:E3:48:39:70' # ESP32 MAC Address
-ip_address = esp32_ip_address(esp32_mac_address)
-print(ip_address)
+# esp32_mac_address = 'A8:42:E3:48:39:70' # ESP32 MAC Address
+# ip_address = esp32_ip_address(esp32_mac_address)
+# print(ip_address)

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor Control</title>
+</head>
+<body>
+    <h1>DC Motor Speed Control</h1>
+    
+    <form action="/set_speed" method="POST" id="speed-form">
+        <label for="speed">Set Motor Speed:</label>
+        <input type="number" id="speed" name="speed" min="0" max="100" required>
+        <button type="submit">Set Speed</button>
+    </form>
+
+    <p id="response-message"></p>
+
+    <script>
+        document.getElementById('speed-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const speed = document.getElementById('speed').value;
+            
+            const response = await fetch('/set_speed', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'speed': speed
+                })
+            });
+
+            const result = await response.json();
+            document.getElementById('response-message').innerText = result.message;
+        });
+    </script>
+</body>
+</html>
